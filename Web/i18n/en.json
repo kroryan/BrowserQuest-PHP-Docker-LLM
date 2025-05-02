@@ -1,0 +1,392 @@
+{
+  "ui": {
+    "title": "BrowserQuest",
+    "description": "Play Mozilla's BrowserQuest, an HTML5 massively multiplayer game demo powered by WebSockets!",
+    "noscript": "You need to enable JavaScript to play BrowserQuest.",
+    "rotate_device": "Please rotate your device to landscape mode",
+    "create_character": {
+      "title": "A Massively Multiplayer Adventure",
+      "name_placeholder": "Name your character",
+      "button": "Play"
+    },
+    "load_character": {
+      "title": "Load your character",
+      "or_create_new": "or create a new character"
+    },
+    "delete_character": {
+      "title": "Delete your character?",
+      "confirm": "All your items and achievements will be lost.\nAre you sure you wish to continue?",
+      "button": "Delete",
+      "cancel": "cancel"
+    },
+    "credits": {
+      "title": "Made for Mozilla by Little Workshop",
+      "pixels_by": "Pixels by",
+      "code_by": "Code by",
+      "music_by": "Music by",
+      "close": "- click anywhere to close -"
+    },
+    "about": {
+      "title": "What is BrowserQuest?",
+      "description": "BrowserQuest is a multiplayer game inviting you to explore a world of adventure from your Web browser.",
+      "technology": "This demo is powered by HTML5 and WebSockets, which allow for real-time gaming and apps on the Web.",
+      "learn_more": "Learn more",
+      "learn_more_about": "about the technology",
+      "compatibility": "BrowserQuest is available on Firefox, Chrome, Safari as well as iOS devices and Firefox for Android.",
+      "source_code": "Grab the source",
+      "source_on_github": "on Github",
+      "close": "- click anywhere to close -"
+    },
+    "death": {
+      "message": "You are dead...",
+      "button": "Respawn"
+    },
+    "error": {
+      "title": "Your browser cannot run BrowserQuest!",
+      "description": "We're sorry, but your browser does not support WebSockets.\nIn order to play, we recommend using the latest version of Firefox, Chrome or Safari."
+    },
+    "instructions": {
+      "title": "How to play",
+      "instructions": [
+        "Left click or tap to move, attack and pick up items.",
+        "Press ENTER to chat.",
+        "Your character is automatically saved as you play."
+      ],
+      "close": "- click anywhere to close -"
+    },
+    "achievements": {
+      "completed": "Completed",
+      "new": "New Achievement Unlocked!"
+    },
+    "interface": {
+      "players": "players",
+      "players_in_instance": "players in your instance",
+      "players_total": "players total",
+      "share": "Share this on",
+      "credits": "Credits"
+    },
+    "notifications": {
+      "cookies_required": "You need to enable cookies/localStorage to play BrowserQuest"
+    }
+  },
+  "game": {
+    "welcome": "Welcome to BrowserQuest!",
+    "welcome_new": "Welcome to BrowserQuest, %1!",
+    "welcome_back": "Welcome back, %1!",
+    "item_pickup": "You picked up %1",
+    "hp_recovery": "You recovered %1 health points.",
+    "chat_max_length": "Your message can be at most %1 characters long.",
+    "combat": {
+      "player_hit": "You hit %1 for %2 health points.",
+      "player_killed": "You killed %1",
+      "enemy_hit": "%1 hit you for %2 health points.",
+      "enemy_killed": "%1 was killed by %2.",
+      "boss_killed": "You killed the skeleton king",
+      "killed_vowel": "You killed an %1",
+      "killed_consonant": "You killed a %1"
+    },
+    "target_player": "You are now attacking %1",
+    "all_chat": "[All] %1: %2",
+    "onconnect": "%1 has joined the game."
+  },
+  "items": {
+    "sword1": "Small Sword",
+    "sword2": "Medium Sword",
+    "axe": "Axe",
+    "redsword": "Red Sword",
+    "bluesword": "Blue Sword",
+    "goldensword": "Golden Sword",
+    "morningstar": "Morning Star",
+    "leatherarmor": "Leather Armor",
+    "mailarmor": "Mail Armor",
+    "platearmor": "Plate Armor",
+    "redarmor": "Red Armor",
+    "goldenarmor": "Golden Armor",
+    "flask": "Health Flask",
+    "cake": "Cake",
+    "burger": "Burger"
+  },
+  "entities": {
+    "rat": "Rat",
+    "skeleton": "Skeleton",
+    "goblin": "Goblin",
+    "ogre": "Ogre",
+    "spectre": "Spectre",
+    "deathknight": "Death Knight",
+    "crab": "Crab",
+    "snake": "Snake",
+    "bat": "Bat",
+    "wizard": "Wizard",
+    "eye": "Eye",
+    "snake2": "Giga Snake",
+    "skeleton2": "Skeleton King",
+    "boss": "The Boss",
+    "chest": "Chest"
+  },
+  "npcs": {
+    "guard": {
+      "name": "Guard",
+      "dialogs": [
+        "Hello there",
+        "We don't need to see your identification",
+        "You are not the player we're looking for",
+        "Move along, move along..."
+      ]
+    },
+    "king": {
+      "name": "King",
+      "dialogs": [
+        "Hi, I'm the King",
+        "I run this place",
+        "Like a boss",
+        "I talk to people",
+        "Like a boss",
+        "I wear a crown",
+        "Like a boss",
+        "I do nothing all day",
+        "Like a boss",
+        "Now leave me alone",
+        "Like a boss"
+      ]
+    },
+    "villagegirl": {
+      "name": "Forest Girl",
+      "dialogs": [
+        "Hi there, adventurer!",
+        "How do you like this game?",
+        "It's all happening in a single web page! Isn't it crazy?",
+        "It's all made possible thanks to WebSockets.",
+        "I don't know much about it, after all I'm just a program.",
+        "Why don't you read this <a target=\"_blank\" href=\"http://hacks.mozilla.org/2012/03/browserquest/\">blog post</a> and learn all about it?"
+      ]
+    },
+    "villager": {
+      "name": "Villager",
+      "dialogs": [
+        "Howdy stranger. Do you like poetry?",
+        "Roses are red, violets are blue...",
+        "I like hunting rats, and so do you...",
+        "The rats are dead, now what to do?",
+        "To be honest, I have no clue.",
+        "Maybe the forest, could interest you...",
+        "or instead, cook a rat stew."
+      ]
+    },
+    "agent": {
+      "name": "Agent",
+      "dialogs": [
+        "Do not try to bend the sword",
+        "That's impossible",
+        "Instead, only try to realize the truth...",
+        "There is no sword."
+      ]
+    },
+    "rick": {
+      "name": "Rick",
+      "dialogs": [
+        "We're no strangers to love",
+        "You know the rules and so do I",
+        "A full commitment's what I'm thinking of",
+        "You wouldn't get this from any other guy",
+        "I just wanna tell you how I'm feeling",
+        "Gotta make you understand",
+        "Never gonna give you up",
+        "Never gonna let you down",
+        "Never gonna run around and desert you",
+        "Never gonna make you cry",
+        "Never gonna say goodbye",
+        "Never gonna tell a lie and hurt you"
+      ]
+    },
+    "scientist": {
+      "name": "Scientist",
+      "dialogs": [
+        "Greetings.",
+        "I am the inventor of these two potions.",
+        "The red one will replenish your health points...",
+        "The orange one will turn you into a firefox and make you invincible...",
+        "But it only lasts for a short while.",
+        "So make good use of it!",
+        "Now if you'll excuse me, I need to get back to my experiments..."
+      ]
+    },
+    "nyan": {
+      "name": "Nyan Cat",
+      "dialogs": [
+        "nyan nyan nyan nyan nyan",
+        "nyan nyan nyan nyan nyan nyan nyan",
+        "nyan nyan nyan nyan nyan nyan",
+        "nyan nyan nyan nyan nyan nyan nyan nyan"
+      ]
+    },
+    "beachnpc": {
+      "name": "Fisherman",
+      "dialogs": [
+        "Don't mind me, I'm just here on vacation.",
+        "I have to say...",
+        "These giant crabs are somewhat annoying.",
+        "Could you please get rid of them for me?"
+      ]
+    },
+    "forestnpc": {
+      "name": "Hunter",
+      "dialogs": [
+        "I'm hunting for rabbits although they always manage to run away from me.",
+        "I just can't seem to catch any."
+      ]
+    },
+    "desertnpc": {
+      "name": "Desert Man",
+      "dialogs": [
+        "One does not simply walk into these mountains...",
+        "An ancient undead lord is said to dwell here.",
+        "Nobody knows exactly what he looks like...",
+        "...for none has lived to tell the tale.",
+        "It's not too late to turn around and go home, kid."
+      ]
+    },
+    "lavanpc": {
+      "name": "Lava Guide",
+      "dialogs": [
+        "Watch out for lava pits!",
+        "It seems like the volcano is going to erupt soon."
+      ]
+    },
+    "priest": {
+      "name": "Priest",
+      "dialogs": [
+        "Oh, hello, young man.",
+        "Wisdom is everything, so I'll share a few guidelines with you.",
+        "You are free to go wherever you like in this world",
+        "but beware of the many foes that await you.",
+        "You can find many weapons and armors by killing enemies.",
+        "The tougher the enemy, the higher the potential rewards.",
+        "You can also unlock achievements by exploring and hunting.",
+        "Click on the small cup icon to see a list of all the achievements.",
+        "Please stay a while and enjoy the many surprises of BrowserQuest",
+        "Farewell, young friend."
+      ]
+    },
+    "sorcerer": {
+      "name": "Sorcerer",
+      "dialogs": [
+        "Ah... I had foreseen you would come to see me.",
+        "Well? How do you like my new staff?",
+        "Pretty cool, eh?",
+        "Where did I get it, you ask?",
+        "I understand. It's easy to get envious.",
+        "I actually crafted it myself, using my mad wizard skills.",
+        "But let me tell you one thing...",
+        "There are lots of items in this game.",
+        "Some more powerful than others.",
+        "In order to find them, exploration is key.",
+        "Good luck."
+      ]
+    },
+    "octocat": {
+      "name": "Octocat",
+      "dialogs": [
+        "Welcome to BrowserQuest!",
+        "Want to see the source code?",
+        "Check out <a target=\"_blank\" href=\"http://github.com/mozilla/BrowserQuest\">the repository on GitHub</a>"
+      ]
+    },
+    "coder": {
+      "name": "Coder",
+      "dialogs": [
+        "Hi! Do you know that you can also play BrowserQuest on your tablet or mobile?",
+        "That's the beauty of HTML5!",
+        "Give it a try..."
+      ]
+    },
+    "othernpc": {
+      "name": "Villager",
+      "dialogs": [
+        "lorem ipsum",
+        "lorem ipsum"
+      ]
+    }
+  },
+  "achievements": {
+    "A_TRUE_WARRIOR": {
+      "name": "A True Warrior",
+      "desc": "Find a new weapon"
+    },
+    "INTO_THE_WILD": {
+      "name": "Into the Wild",
+      "desc": "Venture outside the village"
+    },
+    "ANGRY_RATS": {
+      "name": "Angry Rats",
+      "desc": "Kill 10 rats"
+    },
+    "SMALL_TALK": {
+      "name": "Small Talk",
+      "desc": "Talk to a non-player character"
+    },
+    "FAT_LOOT": {
+      "name": "Fat Loot",
+      "desc": "Get a new armor set"
+    },
+    "UNDERGROUND": {
+      "name": "Underground",
+      "desc": "Explore at least one cave"
+    },
+    "AT_WORLDS_END": {
+      "name": "At World's End",
+      "desc": "Reach the south shore"
+    },
+    "COWARD": {
+      "name": "Coward",
+      "desc": "Successfully escape an enemy"
+    },
+    "TOMB_RAIDER": {
+      "name": "Tomb Raider",
+      "desc": "Find the graveyard"
+    },
+    "SKULL_COLLECTOR": {
+      "name": "Skull Collector",
+      "desc": "Kill 10 skeletons"
+    },
+    "NINJA_LOOT": {
+      "name": "Ninja Loot",
+      "desc": "Get hold of an item you didn't fight for"
+    },
+    "NO_MANS_LAND": {
+      "name": "No Man's Land",
+      "desc": "Travel through the desert"
+    },
+    "HUNTER": {
+      "name": "Hunter",
+      "desc": "Kill 50 enemies"
+    },
+    "STILL_ALIVE": {
+      "name": "Still Alive",
+      "desc": "Revive your character five times"
+    },
+    "MEATSHIELD": {
+      "name": "Meatshield",
+      "desc": "Take 5,000 points of damage"
+    },
+    "HOT_SPOT": {
+      "name": "Hot Spot",
+      "desc": "Enter the volcanic mountains"
+    },
+    "HERO": {
+      "name": "Hero",
+      "desc": "Defeat the final boss"
+    },
+    "FOXY": {
+      "name": "Foxy",
+      "desc": "Find the Firefox costume"
+    },
+    "FOR_SCIENCE": {
+      "name": "For Science",
+      "desc": "Enter into a portal"
+    },
+    "RICKROLLD": {
+      "name": "Rickroll'd",
+      "desc": "Take some singing lessons"
+    }
+  }
+}

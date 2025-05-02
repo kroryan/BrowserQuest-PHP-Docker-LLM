@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  browserquest:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"  # Puerto WebSocket para el juego
+      - "8787:8787"  # Puerto HTTP para el frontend web
+    volumes:
+      # Volumen opcional para desarrollo local
+      - ./Web/config:/app/Web/config
+    restart: unless-stopped
+    environment:
+      - TZ=UTC
+      # IMPORTANTE: Cambia HOST_ADDRESS a tu IP real o nombre de dominio
+      # para que el cliente se conecte correctamente al WebSocket
+      - HOST_ADDRESS=localhost  # Debe ser accesible desde el navegador del cliente
+      - HOST_PORT=8000         # Puerto del WebSocket (normalmente 8000)
+      # Ejemplos:
+      # - HOST_ADDRESS=192.168.1.100
+      # - HOST_ADDRESS=midominio.com
+      # Si estás usando Docker en una máquina remota, usa la IP pública

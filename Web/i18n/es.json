@@ -1,0 +1,392 @@
+{
+  "ui": {
+    "title": "BrowserQuest",
+    "description": "¡Juega BrowserQuest de Mozilla, un juego multijugador masivo demo en HTML5 impulsado por WebSockets!",
+    "noscript": "Necesitas activar JavaScript para jugar BrowserQuest.",
+    "rotate_device": "Por favor, gira tu dispositivo al modo horizontal",
+    "create_character": {
+      "title": "Una Aventura Multijugador Masiva",
+      "name_placeholder": "Nombra a tu personaje",
+      "button": "Jugar"
+    },
+    "load_character": {
+      "title": "Cargar tu personaje",
+      "or_create_new": "o crear un nuevo personaje"
+    },
+    "delete_character": {
+      "title": "¿Eliminar tu personaje?",
+      "confirm": "Todos tus objetos y logros se perderán.\n¿Estás seguro de que deseas continuar?",
+      "button": "Eliminar",
+      "cancel": "cancelar"
+    },
+    "credits": {
+      "title": "Hecho para Mozilla por Little Workshop",
+      "pixels_by": "Píxeles por",
+      "code_by": "Código por",
+      "music_by": "Música por",
+      "close": "- haz clic en cualquier lugar para cerrar -"
+    },
+    "about": {
+      "title": "¿Qué es BrowserQuest?",
+      "description": "BrowserQuest es un juego multijugador que te invita a explorar un mundo de aventuras desde tu navegador web.",
+      "technology": "Esta demo funciona con HTML5 y WebSockets, que permiten juegos y aplicaciones en tiempo real en la Web.",
+      "learn_more": "Aprende más",
+      "learn_more_about": "sobre la tecnología",
+      "compatibility": "BrowserQuest está disponible en Firefox, Chrome, Safari, así como en dispositivos iOS y Firefox para Android.",
+      "source_code": "Obtén el código fuente",
+      "source_on_github": "en Github",
+      "close": "- haz clic en cualquier lugar para cerrar -"
+    },
+    "death": {
+      "message": "Estás muerto...",
+      "button": "Reaparecer"
+    },
+    "error": {
+      "title": "¡Tu navegador no puede ejecutar BrowserQuest!",
+      "description": "Lo sentimos, pero tu navegador no soporta WebSockets.\nPara jugar, recomendamos usar la última versión de Firefox, Chrome o Safari."
+    },
+    "instructions": {
+      "title": "Cómo jugar",
+      "instructions": [
+        "Haz clic izquierdo o toca para moverte, atacar y recoger objetos.",
+        "Presiona ENTER para chatear.",
+        "Tu personaje se guarda automáticamente mientras juegas."
+      ],
+      "close": "- haz clic en cualquier lugar para cerrar -"
+    },
+    "achievements": {
+      "completed": "Completados",
+      "new": "¡Nuevo Logro Desbloqueado!"
+    },
+    "interface": {
+      "players": "jugadores",
+      "players_in_instance": "jugadores en tu instancia",
+      "players_total": "jugadores en total",
+      "share": "Comparte esto en",
+      "credits": "Créditos"
+    },
+    "notifications": {
+      "cookies_required": "Necesitas activar cookies/localStorage para jugar BrowserQuest"
+    }
+  },
+  "game": {
+    "welcome": "¡Bienvenido a BrowserQuest!",
+    "welcome_new": "¡Bienvenido a BrowserQuest, %1!",
+    "welcome_back": "¡Bienvenido de nuevo, %1!",
+    "item_pickup": "Has recogido %1",
+    "hp_recovery": "Has recuperado %1 puntos de salud.",
+    "chat_max_length": "Tu mensaje puede tener como máximo %1 caracteres.",
+    "combat": {
+      "player_hit": "Has golpeado a %1 por %2 puntos de salud.",
+      "player_killed": "Has matado a %1",
+      "enemy_hit": "%1 te ha golpeado por %2 puntos de salud.",
+      "enemy_killed": "%1 fue asesinado por %2.",
+      "boss_killed": "Has matado al rey esqueleto",
+      "killed_vowel": "Has matado a un %1",
+      "killed_consonant": "Has matado a un %1"
+    },
+    "target_player": "Ahora estás atacando a %1",
+    "all_chat": "[Todos] %1: %2",
+    "onconnect": "%1 se ha unido al juego."
+  },
+  "items": {
+    "sword1": "Espada Pequeña",
+    "sword2": "Espada Mediana",
+    "axe": "Hacha",
+    "redsword": "Espada Roja",
+    "bluesword": "Espada Azul",
+    "goldensword": "Espada Dorada",
+    "morningstar": "Lucero del Alba",
+    "leatherarmor": "Armadura de Cuero",
+    "mailarmor": "Cota de Malla",
+    "platearmor": "Armadura de Placas",
+    "redarmor": "Armadura Roja",
+    "goldenarmor": "Armadura Dorada",
+    "flask": "Frasco de Salud",
+    "cake": "Pastel",
+    "burger": "Hamburguesa"
+  },
+  "entities": {
+    "rat": "Rata",
+    "skeleton": "Esqueleto",
+    "goblin": "Duende",
+    "ogre": "Ogro",
+    "spectre": "Espectro",
+    "deathknight": "Caballero de la Muerte",
+    "crab": "Cangrejo",
+    "snake": "Serpiente",
+    "bat": "Murciélago",
+    "wizard": "Mago",
+    "eye": "Ojo",
+    "snake2": "Mega Serpiente",
+    "skeleton2": "Rey Esqueleto",
+    "boss": "El Jefe",
+    "chest": "Cofre"
+  },
+  "npcs": {
+    "guard": {
+      "name": "Guardia",
+      "dialogs": [
+        "Hola, viajero",
+        "No necesitamos ver tu identificación",
+        "No eres el jugador que estamos buscando",
+        "Sigue tu camino, sigue tu camino..."
+      ]
+    },
+    "king": {
+      "name": "Rey",
+      "dialogs": [
+        "Hola, soy el Rey",
+        "Yo dirijo este lugar",
+        "Como un jefe",
+        "Hablo con la gente",
+        "Como un jefe",
+        "Llevo una corona",
+        "Como un jefe",
+        "No hago nada en todo el día",
+        "Como un jefe",
+        "Ahora déjame en paz",
+        "Como un jefe"
+      ]
+    },
+    "villagegirl": {
+      "name": "Chica del Bosque",
+      "dialogs": [
+        "¡Hola, aventurero!",
+        "¿Qué te parece este juego?",
+        "¡Todo está sucediendo en una sola página web! ¿No es increíble?",
+        "Todo es posible gracias a WebSockets.",
+        "No sé mucho al respecto, después de todo solo soy un programa.",
+        "¿Por qué no lees esta <a target=\"_blank\" href=\"http://hacks.mozilla.org/2012/03/browserquest/\">entrada del blog</a> y aprendes todo sobre ello?"
+      ]
+    },
+    "villager": {
+      "name": "Aldeano",
+      "dialogs": [
+        "Hola forastero. ¿Te gusta la poesía?",
+        "Las rosas son rojas, las violetas son azules...",
+        "Me gusta cazar ratas, y a ti también...",
+        "Las ratas están muertas, ¿ahora qué hacer?",
+        "Para ser honesto, no tengo ni idea.",
+        "Tal vez el bosque podría interesarte...",
+        "o en su lugar, preparar un estofado de rata."
+      ]
+    },
+    "agent": {
+      "name": "Agente",
+      "dialogs": [
+        "No intentes doblar la espada",
+        "Eso es imposible",
+        "En cambio, trata de comprender la verdad...",
+        "No hay espada."
+      ]
+    },
+    "rick": {
+      "name": "Rick",
+      "dialogs": [
+        "Nunca fuimos extraños al amor",
+        "Conoces las reglas y yo también",
+        "Un compromiso total es lo que estoy pensando",
+        "No obtendrías esto de ningún otro chico",
+        "Solo quiero decirte cómo me siento",
+        "Debo hacerte entender",
+        "Nunca te voy a abandonar",
+        "Nunca te voy a decepcionar",
+        "Nunca voy a correr y abandonarte",
+        "Nunca te haré llorar",
+        "Nunca voy a decir adiós",
+        "Nunca diré una mentira y te lastimaré"
+      ]
+    },
+    "scientist": {
+      "name": "Científico",
+      "dialogs": [
+        "Saludos.",
+        "Soy el inventor de estas dos pociones.",
+        "La roja repondrá tus puntos de salud...",
+        "La naranja te convertirá en un firefox y te hará invencible...",
+        "Pero solo dura un corto tiempo.",
+        "¡Así que haz buen uso de ella!",
+        "Ahora, si me disculpas, necesito volver a mis experimentos..."
+      ]
+    },
+    "nyan": {
+      "name": "Gato Nyan",
+      "dialogs": [
+        "nyan nyan nyan nyan nyan",
+        "nyan nyan nyan nyan nyan nyan nyan",
+        "nyan nyan nyan nyan nyan nyan",
+        "nyan nyan nyan nyan nyan nyan nyan nyan"
+      ]
+    },
+    "beachnpc": {
+      "name": "Pescador",
+      "dialogs": [
+        "No me hagas caso, solo estoy aquí de vacaciones.",
+        "Tengo que decir...",
+        "Estos cangrejos gigantes son algo molestos.",
+        "¿Podrías deshacerte de ellos por mí?"
+      ]
+    },
+    "forestnpc": {
+      "name": "Cazador",
+      "dialogs": [
+        "Estoy cazando conejos, aunque siempre logran escapar de mí.",
+        "Simplemente no puedo atrapar ninguno."
+      ]
+    },
+    "desertnpc": {
+      "name": "Hombre del Desierto",
+      "dialogs": [
+        "Uno no simplemente camina hacia estas montañas...",
+        "Se dice que un antiguo señor no-muerto habita aquí.",
+        "Nadie sabe exactamente cómo se ve...",
+        "...porque ninguno ha vivido para contarlo.",
+        "No es demasiado tarde para dar la vuelta y volver a casa, chico."
+      ]
+    },
+    "lavanpc": {
+      "name": "Guía de Lava",
+      "dialogs": [
+        "¡Cuidado con los pozos de lava!",
+        "Parece que el volcán va a entrar en erupción pronto."
+      ]
+    },
+    "priest": {
+      "name": "Sacerdote",
+      "dialogs": [
+        "Oh, hola, joven.",
+        "La sabiduría lo es todo, así que compartiré algunos consejos contigo.",
+        "Eres libre de ir a donde quieras en este mundo",
+        "pero cuidado con los muchos enemigos que te esperan.",
+        "Puedes encontrar muchas armas y armaduras matando enemigos.",
+        "Cuanto más difícil es el enemigo, mayores son las recompensas potenciales.",
+        "También puedes desbloquear logros explorando y cazando.",
+        "Haz clic en el pequeño ícono de copa para ver una lista de todos los logros.",
+        "Por favor, quédate un rato y disfruta de las muchas sorpresas de BrowserQuest",
+        "Adiós, joven amigo."
+      ]
+    },
+    "sorcerer": {
+      "name": "Hechicero",
+      "dialogs": [
+        "Ah... Había previsto que vendrías a verme.",
+        "¿Y bien? ¿Qué te parece mi nuevo báculo?",
+        "Bastante genial, ¿eh?",
+        "¿Dónde lo conseguí, preguntas?",
+        "Entiendo. Es fácil sentir envidia.",
+        "En realidad lo fabriqué yo mismo, usando mis locas habilidades de mago.",
+        "Pero déjame decirte una cosa...",
+        "Hay muchos objetos en este juego.",
+        "Algunos más poderosos que otros.",
+        "Para encontrarlos, la exploración es clave.",
+        "Buena suerte."
+      ]
+    },
+    "octocat": {
+      "name": "Octocat",
+      "dialogs": [
+        "¡Bienvenido a BrowserQuest!",
+        "¿Quieres ver el código fuente?",
+        "Visita <a target=\"_blank\" href=\"http://github.com/mozilla/BrowserQuest\">el repositorio en GitHub</a>"
+      ]
+    },
+    "coder": {
+      "name": "Programador",
+      "dialogs": [
+        "¡Hola! ¿Sabías que también puedes jugar BrowserQuest en tu tablet o móvil?",
+        "¡Esa es la belleza de HTML5!",
+        "Pruébalo..."
+      ]
+    },
+    "othernpc": {
+      "name": "Aldeano",
+      "dialogs": [
+        "lorem ipsum",
+        "lorem ipsum"
+      ]
+    }
+  },
+  "achievements": {
+    "A_TRUE_WARRIOR": {
+      "name": "Un Verdadero Guerrero",
+      "desc": "Encuentra una nueva arma"
+    },
+    "INTO_THE_WILD": {
+      "name": "En lo Salvaje",
+      "desc": "Aventúrate fuera de la aldea"
+    },
+    "ANGRY_RATS": {
+      "name": "Ratas Furiosas",
+      "desc": "Mata a 10 ratas"
+    },
+    "SMALL_TALK": {
+      "name": "Charla Casual",
+      "desc": "Habla con un personaje no jugador"
+    },
+    "FAT_LOOT": {
+      "name": "Botín Abundante",
+      "desc": "Consigue un nuevo conjunto de armadura"
+    },
+    "UNDERGROUND": {
+      "name": "Subterráneo",
+      "desc": "Explora al menos una cueva"
+    },
+    "AT_WORLDS_END": {
+      "name": "En el Fin del Mundo",
+      "desc": "Llega a la costa sur"
+    },
+    "COWARD": {
+      "name": "Cobarde",
+      "desc": "Escapa con éxito de un enemigo"
+    },
+    "TOMB_RAIDER": {
+      "name": "Saqueador de Tumbas",
+      "desc": "Encuentra el cementerio"
+    },
+    "SKULL_COLLECTOR": {
+      "name": "Coleccionista de Cráneos",
+      "desc": "Mata a 10 esqueletos"
+    },
+    "NINJA_LOOT": {
+      "name": "Botín Ninja",
+      "desc": "Consigue un objeto por el que no luchaste"
+    },
+    "NO_MANS_LAND": {
+      "name": "Tierra de Nadie",
+      "desc": "Viaja a través del desierto"
+    },
+    "HUNTER": {
+      "name": "Cazador",
+      "desc": "Mata a 50 enemigos"
+    },
+    "STILL_ALIVE": {
+      "name": "Aún con Vida",
+      "desc": "Revive a tu personaje cinco veces"
+    },
+    "MEATSHIELD": {
+      "name": "Escudo Humano",
+      "desc": "Recibe 5,000 puntos de daño"
+    },
+    "HOT_SPOT": {
+      "name": "Punto Caliente",
+      "desc": "Entra en las montañas volcánicas"
+    },
+    "HERO": {
+      "name": "Héroe",
+      "desc": "Derrota al jefe final"
+    },
+    "FOXY": {
+      "name": "Astuto",
+      "desc": "Encuentra el disfraz de Firefox"
+    },
+    "FOR_SCIENCE": {
+      "name": "Por la Ciencia",
+      "desc": "Entra en un portal"
+    },
+    "RICKROLLD": {
+      "name": "Rickrolleado",
+      "desc": "Toma algunas clases de canto"
+    }
+  }
+}

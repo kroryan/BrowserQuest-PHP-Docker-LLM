@@ -1,0 +1,7 @@
+.git
+.gitignore
+vendor/
+README.md
+Guia de error.txt
+docker-compose.yml
+.dockerignore
