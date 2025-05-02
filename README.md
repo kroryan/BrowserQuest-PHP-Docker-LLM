@@ -1,5 +1,8 @@
 # BrowserQuest-PHP Docker
 
+![BrowserQuest width workerman](https://github.com/walkor/BrowserQuest-PHP/blob/master/Web/img/screenshot.jpg?raw=true)
+
+
 BrowserQuest-PHP is a multiplayer online game based on Mozilla's BrowserQuest, with the backend rewritten in PHP using the Workerman framework. This repository provides a Dockerized setup for easy deployment and management.
 
 ---
