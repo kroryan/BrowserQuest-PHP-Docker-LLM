@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     unzip \
     git \
+    dos2unix \
     && docker-php-ext-install zip pcntl
 
 # Instalar composer
@@ -23,9 +24,10 @@ RUN composer install
 # En lugar de modificar los archivos, exponemos los puertos correctamente
 EXPOSE 8000 8787
 
-# Preparar script de inicio
+# Preparar script de inicio (con corrección de formato de línea)
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+RUN dos2unix /usr/local/bin/docker-entrypoint.sh && \
+    chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Comando de inicio
-CMD ["docker-entrypoint.sh"]
+# Comando de inicio con ruta absoluta
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
