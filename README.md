@@ -1,7 +1,7 @@
 # BrowserQuest-PHP Docker with Ollama Integration
 
-![BrowserQuest width workerman](https://github.com/kroryan/BrowserQuest-PHP-Docker-LLM/blob/master/Web/img/screenshot.jpg?raw=true)
-![BrowserQuest width workerman](https://github.com/kroryan/BrowserQuest-PHP-Docker-LLM/blob/master/Web/img/screenshot1.jpg?raw=true)
+![BrowserQuest width workerman](https://github.com/kroryan/BrowserQuest-PHP-Docker-LLM/blob/main/Web/img/screenshot.jpg?raw=true)
+![BrowserQuest width workerman](https://github.com/kroryan/BrowserQuest-PHP-Docker-LLM/blob/main/Web/img/screenshot1.jpg?raw=true)
 
 
 BrowserQuest-PHP is a multiplayer online game based on Mozilla's BrowserQuest, with the backend rewritten in PHP using the Workerman framework. This repository provides a Dockerized setup for easy deployment and management, now with dynamic NPC dialogues powered by Ollama.
