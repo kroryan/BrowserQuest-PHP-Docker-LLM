@@ -202,6 +202,9 @@ class OllamaService
      */
     private function buildPrompt($npcContext, $playerName, $playerContext, $language = 'en')
     {
+        // Force lowercase for reliable language comparison
+        $language = strtolower(trim($language));
+        
         // Base del prompt en inglés por defecto
         $gameContext = "You are in a medieval fantasy RPG game called BrowserQuest. The game is set in a world with monsters, villages, forests, deserts, and dungeons. Players are adventurers who explore the world, fight monsters, and seek treasures.";
         $roleInstruction = "You are an NPC (non-player character) in this world. " . $npcContext;
@@ -209,17 +212,20 @@ class OllamaService
         $responseGuidance = "Respond as your character would, briefly (maximum 2 sentences) and in first person. Your response should be contextual, interesting and immersive, reflecting your character's personality and the fantasy world you live in. Don't use quotes or narrate your actions, simply respond with what you would say.";
         
         // Si el idioma es español, traducir el prompt
-        if (strtolower($language) === 'es') {
+        if ($language === 'es') {
             $gameContext = "Estás en un juego RPG medieval de fantasía llamado BrowserQuest. El juego está ambientado en un mundo con monstruos, aldeas, bosques, desiertos y mazmorras. Los jugadores son aventureros que exploran el mundo, luchan contra monstruos y buscan tesoros.";
             $roleInstruction = "Eres un NPC (personaje no jugador) en este mundo. " . $npcContext;
             $playerInfo = "Un aventurero llamado $playerName se acerca a ti. " . ($playerContext ? "$playerContext " : "");
             $responseGuidance = "Responde como lo haría tu personaje, de forma breve (máximo 2 frases) y en primera persona. Tu respuesta debe ser contextual, interesante e inmersiva, reflejando la personalidad de tu personaje y el mundo de fantasía en el que vives. No uses comillas ni narres tus acciones, simplemente responde con lo que dirías.";
         }
         
-        // Añadir instrucción explícita sobre el idioma
+        // Añadir instrucción explícita sobre el idioma - make this very clear and emphatic
         $languageInstruction = ($language === 'es') 
-            ? "IMPORTANTE: Responde en español." 
-            : "IMPORTANT: Respond in English.";
+            ? "IMPORTANTE: DEBES RESPONDER COMPLETAMENTE EN ESPAÑOL. NO RESPONDAS EN INGLÉS BAJO NINGUNA CIRCUNSTANCIA." 
+            : "IMPORTANT: YOU MUST RESPOND COMPLETELY IN ENGLISH. DO NOT RESPOND IN SPANISH UNDER ANY CIRCUMSTANCES.";
+        
+        // Log the language being used for debugging
+        $this->logMessage("Building prompt with language: " . $language);
         
         // Construir el prompt completo
         return $gameContext . "\n\n" . 
