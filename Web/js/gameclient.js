@@ -551,10 +551,10 @@ define(['player', 'entityfactory', 'lib/bison'], function(Player, EntityFactory,
         },
         
         sendTalk: function(npc) {
-            // Obtener el idioma actual del juego
+            // Obtener el idioma actual del sistema de internacionalización
             var currentLanguage = 'en';
-            if (typeof(game) !== 'undefined' && game.currentLanguage) {
-                currentLanguage = game.currentLanguage;
+            if (typeof(window.i18n) !== 'undefined') {
+                currentLanguage = window.i18n.currentLang;
             }
             
             this.sendMessage([Types.Messages.TALK,

@@ -118,5 +118,8 @@ define(['jquery'], function($) {
         }
     };
     
+    // Export i18n to make it globally accessible for sending the language to the server
+    window.i18n = i18n;
+    
     return i18n;
 });
