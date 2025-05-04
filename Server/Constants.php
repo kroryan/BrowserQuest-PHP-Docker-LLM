@@ -39,6 +39,7 @@ define('TYPES_MESSAGES_HP', 23);
 define('TYPES_MESSAGES_BLINK', 24);
 define('TYPES_MESSAGES_OPEN', 25);
 define('TYPES_MESSAGES_CHECK', 26);
+define('TYPES_MESSAGES_TALK', 27); // Nuevo mensaje para hablar con NPCs
 
 define('TYPES_ENTITIES_WARRIOR', 1);
 

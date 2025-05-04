@@ -41,7 +41,9 @@ class WorldServer
     public $itemCount;
     public $playerCount;
     public $zoneGroupsReady;
-    
+
+    // Instancia del servicio OllamaService
+    public $ollamaService;
     
     public function __construct($id, $maxPlayers, $websocketServer)
     {
@@ -68,6 +70,15 @@ class WorldServer
         $this->playerCount = 0;
         
         $this->zoneGroupsReady = false;
+        
+        // Inicializar el servicio OllamaService
+        try {
+            $this->ollamaService = new OllamaService();
+        } catch (\Exception $e) {
+            echo "Error al inicializar OllamaService: " . $e->getMessage() . "\n";
+            $this->ollamaService = null;
+        }
+
         $self = $this;
         $this->onPlayerConnect(function ($player)use($self)
         {
@@ -1044,5 +1055,77 @@ class WorldServer
     public function onWebSocketConnect($connection)
     {
         
+    }
+
+    /**
+     * Genera un diálogo para un NPC usando Ollama si está disponible
+     * 
+     * @param int $npcType Tipo de NPC (código numérico)
+     * @param Player $player Jugador que interactúa con el NPC
+     * @param string $language Idioma del juego (en, es)
+     * @return string|null Diálogo generado o null si no se pudo generar
+     */
+    public function generateNpcDialogWithOllama($npcType, $player, $language = 'en')
+    {
+        // Si el servicio Ollama no está inicializado o disponible, retornamos null
+        if (!$this->ollamaService || !$this->ollamaService->isAvailable()) {
+            return null;
+        }
+        
+        // Obtener nombre del jugador y su contexto
+        $playerName = $player->name;
+        $playerContext = '';
+        
+        // Añadir contexto adicional sobre el jugador, como su equipo
+        if ($player->armor) {
+            $armorName = Types::getKindAsString($player->armor);
+            $playerContext .= ($language === 'es') ? 
+                "Lleva una armadura de tipo $armorName. " : 
+                "Wearing $armorName armor. ";
+        }
+        
+        if ($player->weapon) {
+            $weaponName = Types::getKindAsString($player->weapon);
+            $playerContext .= ($language === 'es') ? 
+                "Porta un arma de tipo $weaponName. " : 
+                "Carrying a $weaponName weapon. ";
+        }
+        
+        // Si tiene poca vida, informar al NPC
+        if ($player->hitPoints < $player->maxHitPoints / 2) {
+            $playerContext .= ($language === 'es') ? 
+                "Parece estar herido o cansado. " : 
+                "Appears to be injured or tired. ";
+        }
+        
+        // Generar un ID de conversación único basado en NPC y tiempo
+        // Esto asegura que cada cierto tiempo se generará una nueva respuesta
+        // incluso si el jugador habla con el mismo NPC repetidamente
+        $timeSlot = floor(time() / 60); // Cambiar cada minuto
+        $conversationId = $npcType . '_' . $timeSlot;
+        
+        // Generar respuesta usando OllamaService con el ID de conversación y el idioma
+        $npcTypeName = strtolower(Types::getKindAsString($npcType));
+        $dialog = $this->ollamaService->generateNpcResponse($npcTypeName, $playerName, $playerContext, $conversationId, $language);
+        
+        return $dialog;
+    }
+    
+    /**
+     * Envía un diálogo generado por Ollama a un jugador
+     * 
+     * @param Player $player Jugador al que enviar el mensaje
+     * @param Npc $npc NPC que genera el diálogo
+     * @param string $dialog El diálogo a enviar
+     */
+    public function sendNpcDialog($player, $npc, $dialog)
+    {
+        if (!$player || !$npc || empty($dialog)) {
+            return;
+        }
+        
+        // Crear y enviar mensaje de chat
+        $message = new Messages\Chat($npc, $dialog);
+        $this->pushToPlayer($player, $message);
     }
 }

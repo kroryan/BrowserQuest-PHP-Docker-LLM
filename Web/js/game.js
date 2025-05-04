@@ -1611,16 +1611,16 @@ function(InfoManager, BubbleManager, Renderer, Map, Animation, Sprite, AnimatedT
             var msg;
         
             if(npc) {
-                msg = npc.talk();
+                // Enviar mensaje TALK al servidor para generar una respuesta con Ollama
+                this.client.sendTalk(npc);
+                
+                // Mostrar la UI de burbuja pero sin texto todavía
                 this.previousClickPosition = {};
-                if(msg) {
-                    this.createBubble(npc.id, msg);
-                    this.assignBubbleTo(npc);
-                    this.audioManager.playSound("npc");
-                } else {
-                    this.destroyBubble(npc.id);
-                    this.audioManager.playSound("npc-end");
-                }
+                this.assignBubbleTo(npc);
+                
+                // El texto de la burbuja será actualizado cuando el servidor responda con un mensaje de chat
+                this.audioManager.playSound("npc");
+                
                 this.tryUnlockingAchievement("SMALL_TALK");
                 
                 if(npc.kind === Types.Entities.RICK) {

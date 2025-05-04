@@ -1,4 +1,3 @@
-
 define(['player', 'entityfactory', 'lib/bison'], function(Player, EntityFactory, BISON) {
 
     var GameClient = Class.extend({
@@ -31,6 +30,8 @@ define(['player', 'entityfactory', 'lib/bison'], function(Player, EntityFactory,
             this.handlers[Types.Messages.KILL] = this.receiveKill;
             this.handlers[Types.Messages.HP] = this.receiveHitPoints;
             this.handlers[Types.Messages.BLINK] = this.receiveBlink;
+            // Añadir TALK a los tipos de mensajes que el cliente puede manejar
+            this.handlers[Types.Messages.TALK] = this.receiveTalk;
         
             this.useBison = false;
             this.enable();
@@ -278,6 +279,16 @@ define(['player', 'entityfactory', 'lib/bison'], function(Player, EntityFactory,
         
             if(this.chat_callback) {
                 this.chat_callback(id, text);
+            }
+        },
+
+        receiveTalk: function(data) {
+            var npcId = data[1],
+                text = data[2];
+                
+            // El callback es el mismo que para los mensajes de chat normales
+            if(this.chat_callback) {
+                this.chat_callback(npcId, text);
             }
         },
     
@@ -537,6 +548,18 @@ define(['player', 'entityfactory', 'lib/bison'], function(Player, EntityFactory,
         sendCheck: function(id) {
             this.sendMessage([Types.Messages.CHECK,
                               id]);
+        },
+        
+        sendTalk: function(npc) {
+            // Obtener el idioma actual del juego
+            var currentLanguage = 'en';
+            if (typeof(game) !== 'undefined' && game.currentLanguage) {
+                currentLanguage = game.currentLanguage;
+            }
+            
+            this.sendMessage([Types.Messages.TALK,
+                             npc.id,
+                             currentLanguage]);
         }
     });
     

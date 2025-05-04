@@ -95,6 +95,32 @@ class Player extends Character
                 $this->broadcastToZone(new Messages\Chat($this, $msg), false);
             }
         }
+        else if($action == TYPES_MESSAGES_TALK) 
+        {
+            // Hablar con un NPC
+            $npcId = $message[1];
+            $npc = $this->server->getEntityById($npcId);
+            
+            if($npc && $npc instanceof Npc) {
+                // Detectar el idioma del jugador (si está disponible en el mensaje)
+                $language = 'en'; // Idioma por defecto
+                if (isset($message[2])) {
+                    $language = $message[2];
+                }
+                
+                // Intentar generar un diálogo con Ollama
+                $dialog = $this->server->generateNpcDialogWithOllama($npc->kind, $this, $language);
+                
+                if(!$dialog) {
+                    // Si no se pudo generar con Ollama, usar el sistema predeterminado
+                    // Este mensaje será procesado por el cliente para mostrar el mensaje por defecto
+                    $this->server->pushToPlayer($this, new Messages\Chat($npc, "__default__"));
+                } else {
+                    // Enviar el diálogo generado por IA
+                    $this->server->sendNpcDialog($this, $npc, $dialog);
+                }
+            }
+        }
         else if($action == TYPES_MESSAGES_MOVE) {
             if($this->moveCallback) 
             {

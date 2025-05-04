@@ -1,4 +1,3 @@
-
 Types = {
     Messages: {
         HELLO: 0,
@@ -27,7 +26,8 @@ Types = {
         HP: 23,
         BLINK: 24,
         OPEN: 25,
-        CHECK: 26
+        CHECK: 26,
+        TALK: 27  // New message type for NPC dialog generation with Ollama
     },
     
     Entities: {
