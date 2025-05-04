@@ -1,9 +1,9 @@
-# BrowserQuest-PHP Docker
+# BrowserQuest-PHP Docker with Ollama Integration
 
 ![BrowserQuest width workerman](https://github.com/walkor/BrowserQuest-PHP/blob/master/Web/img/screenshot.jpg?raw=true)
 
 
-BrowserQuest-PHP is a multiplayer online game based on Mozilla's BrowserQuest, with the backend rewritten in PHP using the Workerman framework. This repository provides a Dockerized setup for easy deployment and management.
+BrowserQuest-PHP is a multiplayer online game based on Mozilla's BrowserQuest, with the backend rewritten in PHP using the Workerman framework. This repository provides a Dockerized setup for easy deployment and management, now with dynamic NPC dialogues powered by Ollama.
 
 ---
 
@@ -14,6 +14,9 @@ BrowserQuest-PHP is a multiplayer online game based on Mozilla's BrowserQuest, w
 - Persistent configuration for development and production
 - Multilingual support with enhanced language selector
 - Multilingual instructions (English and Spanish)
+- **NEW: AI-powered NPC dialogues** using Ollama
+- **NEW: Dynamic, contextual NPC responses** based on player equipment and status
+- **NEW: Multilingual AI responses** that match the game's selected language
 
 ---
 
@@ -21,6 +24,7 @@ BrowserQuest-PHP is a multiplayer online game based on Mozilla's BrowserQuest, w
 
 - Docker
 - Docker Compose
+- Ollama (for AI-powered NPC dialogues)
 
 ---
 
@@ -103,6 +107,60 @@ Currently supported languages:
 
 ---
 
+## Ollama Integration for Dynamic NPC Dialogues
+
+This version of BrowserQuest-PHP includes integration with [Ollama](https://ollama.ai/), allowing NPCs to generate dynamic, contextual responses using AI language models.
+
+### How It Works
+
+- NPCs now generate unique responses based on their character type and player context
+- Responses adapt to player's equipment, health status, and other game factors
+- The system supports multiple languages (currently English and Spanish)
+- Responses are more varied, natural, and immersive than static dialogue
+
+### Setup Ollama
+
+1. **Install Ollama**
+
+   Follow the installation instructions at [ollama.ai](https://ollama.ai/) for your operating system.
+
+2. **Pull the Recommended Model**
+
+   Pull the following model or another model of your choice:
+   ```bash
+   ollama pull hf.co/soob3123/amoral-gemma3-1B-v2-gguf:Q8_0
+   ```
+
+3. **Configure Ollama in BrowserQuest**
+
+   Edit the Ollama configuration file at `Server/Config/ollama.php` to change settings:
+
+   ```php
+   // Change the Ollama API URL if needed (default works with Docker)
+   'api_base' => 'http://host.docker.internal:11434',
+   
+   // Change the model name if you prefer to use a different model
+   'model' => 'hf.co/soob3123/amoral-gemma3-1B-v2-gguf:Q8_0',
+   ```
+
+### Interacting with NPCs
+
+When you talk to NPCs in the game, the system will use Ollama to generate dynamic responses. Here are some tips:
+
+- **For varied responses**: When interacting with an NPC, clicking repeatedly will generate different responses (sometimes it may take 2-3 clicks to see changes - we're working on improving this)
+- **Contextual dialogues**: NPCs will recognize your character's equipment, health status, and respond accordingly
+- **Language matching**: Responses will be in the same language you've selected for the game interface
+
+### Fallback Mechanism
+
+If Ollama is not available or encounters an error, the system will automatically fall back to the original static dialogues. This ensures the game remains playable even if the AI service is down.
+
+### Customizing NPC Personalities
+
+You can customize how NPCs respond by editing the context templates in `Server/Config/ollama.php`. Each NPC type has different personality traits and knowledge that influence their responses.
+
+---
+
 ## Managing the Docker Container
 
 ### View Logs
@@ -162,6 +220,7 @@ The `Web/config` directory is mounted as a volume in the container. Any changes 
 
 - Docker
 - Docker Compose
+- Ollama (para los diálogos de NPCs generados por IA)
 
 ### Pasos para Iniciar
 
@@ -219,7 +278,59 @@ The `Web/config` directory is mounted as a volume in the container. Any changes 
 
 ---
 
-## Actualizaciones Recientes
+## Integración con Ollama para Diálogos Dinámicos de NPCs
+
+Esta versión de BrowserQuest-PHP incluye integración con [Ollama](https://ollama.ai/), permitiendo que los NPCs generen respuestas dinámicas y contextuales utilizando modelos de lenguaje de IA.
+
+### Cómo Funciona
+
+- Los NPCs ahora generan respuestas únicas basadas en su tipo de personaje y el contexto del jugador
+- Las respuestas se adaptan al equipamiento del jugador, estado de salud y otros factores del juego
+- El sistema soporta múltiples idiomas (actualmente inglés y español)
+- Las respuestas son más variadas, naturales e inmersivas que los diálogos estáticos
+
+### Configuración de Ollama
+
+1. **Instalar Ollama**
+
+   Sigue las instrucciones de instalación en [ollama.ai](https://ollama.ai/) para tu sistema operativo.
+
+2. **Descargar el Modelo Recomendado**
+
+   Descarga el siguiente modelo o cualquier otro modelo de tu elección:
+   ```bash
+   ollama pull hf.co/soob3123/amoral-gemma3-1B-v2-gguf:Q8_0
+   ```
+
+3. **Configurar Ollama en BrowserQuest**
+
+   Edita el archivo de configuración de Ollama en `Server/Config/ollama.php` para cambiar la configuración:
+
+   ```php
+   // Cambia la URL de la API de Ollama si es necesario (el valor predeterminado funciona con Docker)
+   'api_base' => 'http://host.docker.internal:11434',
+   
+   // Cambia el nombre del modelo si prefieres usar un modelo diferente
+   'model' => 'hf.co/soob3123/amoral-gemma3-1B-v2-gguf:Q8_0',
+   ```
+
+### Interactuando con NPCs
+
+Cuando hablas con NPCs en el juego, el sistema utilizará Ollama para generar respuestas dinámicas. Aquí algunos consejos:
+
+- **Para respuestas variadas**: Al interactuar con un NPC, hacer clic repetidamente generará respuestas diferentes (a veces puede tomar 2-3 clics para ver cambios - estamos trabajando para mejorar esto)
+- **Diálogos contextuales**: Los NPCs reconocerán el equipamiento de tu personaje, estado de salud y responderán en consecuencia
+- **Coincidencia de idioma**: Las respuestas estarán en el mismo idioma que hayas seleccionado para la interfaz del juego
+
+### Mecanismo de Respaldo
+
+Si Ollama no está disponible o encuentra un error, el sistema automáticamente utilizará los diálogos estáticos originales. Esto asegura que el juego permanezca jugable incluso si el servicio de IA no está funcionando.
+
+### Personalización de las Personalidades de los NPCs
+
+Puedes personalizar cómo responden los NPCs editando las plantillas de contexto en `Server/Config/ollama.php`. Cada tipo de NPC tiene diferentes rasgos de personalidad y conocimientos que influyen en sus respuestas.
+
+---
 
 ### Sistema de Idiomas Mejorado
 
